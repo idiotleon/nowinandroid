@@ -197,13 +197,16 @@ fun NiaApp(
                             )
                         }
 
-                        NiaNavHost(appState = appState, onShowSnackbar = { message, action ->
-                            snackbarHostState.showSnackbar(
-                                message = message,
-                                actionLabel = action,
-                                duration = Short,
-                            ) == ActionPerformed
-                        })
+                        NiaNavHost(
+                            appState = appState,
+                            onShowSnackbar = { message, action ->
+                                snackbarHostState.showSnackbar(
+                                    message = message,
+                                    actionLabel = action,
+                                    duration = Short,
+                                ) == ActionPerformed
+                            },
+                        )
                     }
 
                     // TODO: We may want to add padding or spacer when the snackbar is shown so that
@@ -278,7 +281,7 @@ private fun NiaBottomBar(
                     )
                 },
                 label = { Text(stringResource(destination.iconTextId)) },
-                modifier = if (hasUnread) Modifier.notificationDot() else Modifier,
+                modifier = if (hasUnread) modifier.notificationDot() else modifier,
             )
         }
     }
